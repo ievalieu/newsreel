@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>News Reel</title>
+
+	{{> head }}
+</head>
+<body>
+
+<!--========== Navigation ==========-->
+{{> header }}
+
+<!--============== Main ============-->
+<main>
+	{{> hero }}
+
+	<!-- Newsfeed of Scraped Articles -->	
+	{{landing}}
+
+	<!-- Scrape Modal Structure -->
+	{{> scrape-modal }}
+	<!-- Login Modal Structure -->
+	{{> login-modal }}
+         
+</main>
+
+<!--============= Footer ===========-->
+{{> footer }}
+
+<!--============ Scripts ==========-->
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$(".parallax").parallax();
+		$("#login").modal();
+		$("#scrape").modal();
+
+    });
+</script>
+</body>
+</html>

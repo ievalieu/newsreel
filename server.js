@@ -1,11 +1,42 @@
+//Dependencies
+//============================================
 var express = require("express");
+var bodyParser = require("body-parser");
+var exphbs = require("express-handlebars");
 var mongojs = require("mongojs");
-
+var mongooes = require("mongoose");
 var cheerio = require("cheerio");
 var request = require("request");
 
+//Assign PORT
+//============================================
+var PORT = 3000;
 var app = express();
 
+//Set up Express App to handle data parsing
+//============================================
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
+app.use(bodyParser.text());
+app.use(bodyParser.json({
+	type: "application/vnd.api+json"
+}));
+
+// Set Handlebars as the default templating engine.
+//============================================
+app.engine("handlebars", exphbs({
+	defaultLayout: "main"
+}));
+app.set("view engine", "handlebars");
+
+// Static Directory
+//============================================
+app.use(express.static(process.cwd() + "/public"));
+
+// Set up MongoDB
+//============================================
 var databaseUrl = "scraper";
 var collections = ["scrapedData"];
 
@@ -14,10 +45,12 @@ db.on("error", function(error){
 	console.log("Database Error:", error);
 });
 
-app.get("/", function(req, res){
-	res.send("Hello World!");
-});
+// app.get("/", function(req, res){
+// 	res.send("Hello World!");
+// });
 
+// Set up scraper with Cheerio
+//============================================
 request("https://www.reddit.com/r/worldnews", function(error, response, html){
 	var $ = cheerio.load(html);
 
@@ -35,17 +68,19 @@ request("https://www.reddit.com/r/worldnews", function(error, response, html){
 	console.log(db.scrapedData);
 });
 
-app.get("/all", function(req, res){
+app.get("/", function(req, res){
 	db.scrapedData.find({}, function(error, found){
 		if(error) {
 			console.log(error);
 		}
 		else {
-			res.json(found);
+			res.render("landing");
 		}
 	});
 });
 
-app.listen(3000, function(){
-	console.log("App running on port 3000!");
+//Listener
+//============================================
+app.listen(PORT, function(){
+	console.log("App running on port", PORT);
 });
