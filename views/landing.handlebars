@@ -1,16 +1,23 @@
 <!-- Scraped Article Cards -->
 
 <div class="container">
-	{{#each Article}}
+	{{#each result}}
 	<div class="row">
 		<div class="col s12 m12 l12">
 			<div class="card blue darken-2">
 				<div class="card-content white-text">
-					<span class="card-title">{{title}}</span>
-					<p>{{description}}</p>
+					<span class="card-title">{{this.title}}</span>
+					<p>{{this.description}}</p>
 				</div>
 				<div class="card-action">
-					<a href="#">{{link}}</a>
+					<div class="row">
+						<div class="col s10 m10 l10">
+							<a href="{{this.link}}">{{this.link}}</a>
+						</div>
+						<div class="col s2 m2 l2">
+							<button class="right btn waves-effect waves-light" type="submit" name="action">Save</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

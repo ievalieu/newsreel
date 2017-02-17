@@ -7,11 +7,15 @@ var ArticleSchema = new Schema({
 	},
 	link: {
 		type: String,
-		required: true
+		required: false
 	},
 	picture: {
 		type: String,
 		required: false
+	},
+	scrapeDate: {
+	    type: Date,
+	    default: Date.now
 	},
 	comment: [{
 		type: Schema.Types.ObjectId,

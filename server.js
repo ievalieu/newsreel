@@ -50,11 +50,11 @@ app.use(express.static(process.cwd() + "/public"));
 mongoose.connect("mongodb://localhost/scraper");
 var db = mongoose.connection;
 
-db.on("error", function(error){
+db.on("error", function(error) {
 	console.log("Mongoose Error: ", error);
 });
 
-db.once("open", function(){
+db.once("open", function() {
 	console.log("Mongoose connection successful.");
 });
 
@@ -68,6 +68,6 @@ require("./controllers/user-api-routes.js")(app);
 
 //Listener
 //============================================
-app.listen(PORT, function(){
+app.listen(PORT, function() {
 	console.log("App running on port", PORT);
 });
