@@ -1,5 +1,8 @@
-# NewsReel
+# Week 18: Newsreel
 
-##mongodb://heroku_xn4w8lwf:jegbai0iuodmcphjnr4cls5vpk@ds147079.mlab.com:47079/heroku_xn4w8lwf
+Technologies:
+* HTML, CSS, Handlebars, Materialize, JS, Node.js, Express, Mongoose
 
-##Trello Workflow: https://trello.com/b/ZLuFNOxg
+mongodb://heroku_xn4w8lwf:jegbai0iuodmcphjnr4cls5vpk@ds147079.mlab.com:47079/heroku_xn4w8lwf
+
+Trello Workflow: https://trello.com/b/ZLuFNOxg
